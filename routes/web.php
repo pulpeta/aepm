@@ -18,6 +18,46 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index');
 
-Route::get('/admin/dashboard', 'AdminController@index')->name('admdashboard');
+//-------------Admin-routes
+
+Route::get('/admin/dashboard', 'AdminController@index');
+
+Route::get('/admin/users', 'AdminController@users')->name('users');
+Route::get('/admin/users/edit/{id}', 'AdminController@edituser');
+Route::patch('/admin/users/update/{id}', 'AdminController@updateuser');
+Route::delete('/admin/users/delete/{id}', 'AdminController@deleteuser');
+
+Route::get('/admin/options', 'AdminController@options')->name('options');
+
+Route::get('/admin/backup', 'AdminController@backup')->name('backup');
+
+//gestione rubrica utenti (caricamento manuale primo step poi tramite ldap-gal)
+
+
+//-------------Manager-routes
+
+Route::get('/manager/dashboard', 'ManagerController@index');
+
+Route::get('/manager/whitelist','WhitelistController@index')->name('whitelist');
+//create white
+//edit white
+//delete white
+
+Route::get('/manager/blacklist','BlacklistController@index')->name('blacklist');
+Route::get('/manager/blacklist/edit/{id}','BlacklistController@editdomain');
+Route::patch('/manager/blacklist/update/{id}', 'BlacklistController@updatedomain');
+Route::delete('/manager/blacklist/delete/{id}','BlacklistController@deletedomain');
+Route::get('/manager/blacklist/new', 'BlacklistController@newdomain');
+Route::post('/manager/blacklist/new', 'BlacklistController@adddomain');
+//create black
+
+
+//policy list get
+//policy create
+//policy edit
+//policy delete
+
+
+

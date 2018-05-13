@@ -27,7 +27,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
         <!-- Brand -->
-        <a class="navbar-brand" href="dashboard"><span class="far fa-home"> </span> </a>
+        <a class="navbar-brand" href="{{'/admin/dashboard'}}"><span class="far fa-home"> </span> </a>
 
         <!-- Toggler/collapsibe Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -40,11 +40,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{'/admin/users'}}"><span class="far fa-address-card"> </span> Users </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{'/admin/options'}}"><span class="far fa-wrench"> </span> Options</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{'/admin/backup'}}"><span class="far fa-hdd"> </span> Backup</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="policydrop" data-toggle="dropdown">
+                        <span class="far fa-book"> </span> Policy Management
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Actions</a>
+                        <a class="dropdown-item" href="#">Rules</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><span class="far fa-question-circle"> Help</span> </a>
@@ -63,9 +66,12 @@
 
 </div>
 
-<script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
-<script src="{{asset('js/popper.min.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
+@section('footer')
+    <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('js/tether-1.4.4.min.js')}}"></script>
+    <script src="{{asset('js/popper.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+@show
 
 </body>
 </html>

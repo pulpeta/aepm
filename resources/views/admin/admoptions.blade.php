@@ -6,6 +6,9 @@
 
 @section('content')
 
+@endsection
 
+@section('footer')
+    @parent
 
-@stop
+@endsection

@@ -1,91 +1,60 @@
 @extends('templates.admlayout')
 
-@section('title', 'Users List')
+@section('title', 'Edit User')
 
-@section('sectionname', 'Users List')
+@section('sectionname', 'Edit User')
 
 @section('content')
 
-    <div class="row" style="margin-bottom: 20px;">
-        <div class="col-sm-12 text-center">
-            <button class="btn btn-sm btn-primary">Add User</button>
-        </div>
-    </div>
-    <div class="row" style="margin-bottom: 20px;">
-        <div class="col-sm-6">
-            <div class="row text-center">
-                <div class="col-sm-12">
-                    <h4>Administrators</h4>
-                </div>
-            </div>
-            <div class="row text-left">
-                <div class="col-sm-12">
-                    @foreach($admins as $admin)
-                        <div class="row">
-                            @if($admin->is_enabled)
-                            <div class="col-sm-4">
-                                {{$admin->name}}
-                            </div>
-                            @else
-                                <div class="col-sm-4 text-muted">
-                                    {{$admin->name}}
-                                </div>
-                            @endif
-                                @if($admin->is_enabled)
-                                    <div class="col-sm-4">
-                                        enabled
-                                    </div>
-                                @else
-                                    <div class="col-sm-4 text-muted">
-                                        disabled
-                                    </div>
-                                @endif
-                            <div class="col-sm-4 text-right">
-                                <a href="#"><span class="far fa-pencil-alt text-success"></span></a>
-                                <a href="#" style="color: red; margin-left: 10px;"><span class="far fa-trash text-danger"></span></a>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="row text-center">
-                <div class="col-sm-12">
-                    <h4>Operators</h4>
-                </div>
-            </div>
-            <div class="row text-left">
-                <div class="col-sm-12">
-                    @foreach($operators as $operator)
-                        <div class="row">
-                            @if($operator->is_enabled)
-                                <div class="col-sm-4">
-                                    {{$operator->name}}
-                                </div>
-                            @else
-                                <div class="col-sm-4 text-muted">
-                                    {{$operator->name}}
-                                </div>
-                            @endif
-                            @if($operator->is_enabled)
-                                <div class="col-sm-4">
-                                    enabled
-                                </div>
-                            @else
-                                <div class="col-sm-4 text-muted">
-                                    disabled
-                                </div>
-                            @endif
-                            <div class="col-sm-4 text-right">
-                                <a href="#"><span class="far fa-pencil-alt text-success"></span></a>
-                                <a href="#" style="color: red; margin-left: 10px;"><span class="far fa-trash text-danger"></span></a>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
+    <div class="row text-center" style="margin-bottom: 20px;">
+        <div class="col-sm-12">
+            <a class="btn btn-primary btn-sm" href="{{'/admin/users'}}">Back to Users</a>
         </div>
     </div>
 
-@stop
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <form action="{{ url ('/admin/users/update/'.$user->id)}}" method="post">
+                {{csrf_field()}}
+                {!! method_field('PATCH') !!}
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" value="{{$user->name}}">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" name="email" id="email" value="{{$user->email}}">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" value="{{$user->password}}">
+                </div>
+                <div class="form-group">
+                    <label for="confirmpassword">Confirm Password</label>
+                    <input type="password" class="form-control" name="confirmpassword" id="confirmpassword">
+                </div>
+                <div class="form-group form-check form-check-inline">
+                    <label class="form-check-label" for="isadmin">Administrator
+                        <input type="checkbox" class="form-check-input" name="isadmin" id="isadmin" checked="{{$user->is_admin}}">
+                    </label>
+                </div>
+                <div class="form-group form-check form-check-inline">
+                    <label class="form-check-label" for="isenabled">Enabled
+                        <input type="checkbox" class="orm-check-input" name="isenabled" id="isenabled" checked="{{$user->is_enabled}}">
+                    </label>
+                </div>
+                <div class="form-group text-center">
+                    <input type="hidden" name="editedat" id="editedat">
+                        <button class="btn btn-sm btn-primary">Save</button>
+                        <button class="btn btn-sm">Reset</button>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+
+
+
+@endsection

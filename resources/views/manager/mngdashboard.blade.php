@@ -1,7 +1,14 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: federicosibella
- * Date: 14/02/18
- * Time: 15:25
- */
+@extends('templates.mnglayout')
+
+@section('title', 'Manager Dashboard')
+
+@section('sectionname', 'Manager Dashboard')
+
+@section('content')
+
+@endsection
+
+@section('footer')
+    @parent
+
+@endsection

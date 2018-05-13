@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\VarDumper\Dumper\DataDumperInterface;
+//use Symfony\Component\VarDumper\Dumper\DataDumperInterface;
 use App\Models\Admin\UserList;
 use App\Models\Admin\Dashboard;
 use Carbon\Carbon;
@@ -13,7 +13,7 @@ class AdminController extends Controller
 {
     public function index(){
 
-        $qrbuilder = Dashboard::orderBy('id', 'asc')->where('id', '1');
+        $qrbuilder = Dashboard::orderBy('id', 'asc');
         $lists = $qrbuilder->get();
 
         return view('admin.admdashboard', ['lists' => $lists]);
@@ -21,26 +21,19 @@ class AdminController extends Controller
 
     public function users(){
 
-        $qrbuilder = UserList::orderBy('name', 'asc')->where('is_admin', '1');
-        $qrbuilder->whereNull('deleted_at');
+        $qrbuilder = UserList::orderBy('name', 'asc');
         $admins = $qrbuilder->get();
 
-        $qrbuilder = UserList::orderBy('name', 'asc')->where('is_admin', '0');
-        $qrbuilder->whereNull('deleted_at');
-        $operators = $qrbuilder->get();
-
-        return view('admin.admlistusers', ['admins' => $admins], ['operators' => $operators]);
+        return view('admin.admlistusers', ['admins' => $admins]);
 
     }
 
     public function deleteuser($id){
 
-        //$res = UserList::where('id', $id)->delete();
-        //return $res;
+        $sql = 'DELETE fROM users where id = :id';
+        DB::delete($sql, ['id' => $id]);
 
-        $user = UserList::find($id);
-        $res = $user->delete();
-        return ''.$res;
+        return redirect()->back();
 
     }
 
@@ -51,7 +44,7 @@ class AdminController extends Controller
 
     }
 
-    public function storeuser($id, Request $req){
+    public function updateuser($id, Request $req){
 
         /*$res = UserList::where('id', $id)->update(
             [
@@ -66,7 +59,11 @@ class AdminController extends Controller
         $user = UserList::find($id);
         $user->name = request()->input('name');
         $user->email = request()->input('email');
+        //verificare password e cifratura
+        $user->password = request()->input('password');
+        //non può essere null
         $user->is_admin = request()->input('is_admin');
+        //non può essere null
         $user->is_enabled = request()->input('is_enabled');
         $user->updated_at = carbon::now();
         $res = $user->save();

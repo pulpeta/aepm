@@ -43,4 +43,9 @@
 
     @endforeach
 
-@stop
+@endsection
+
+@section('footer')
+    @parent
+
+@endsection

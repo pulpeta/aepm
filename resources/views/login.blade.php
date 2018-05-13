@@ -36,7 +36,7 @@
         <p style="margin-top: 20px"><a href="#" class="text-sm-center text-muted" style="text-decoration: none">Forgot Password?</a></p>
 
         <footer>
-            <a href="admin/dashboard" class="text-muted" style="text-decoration: none;">
+            <a href="{{'/manager/dashboard'}}" class="text-muted" style="text-decoration: none;">
                 <p class="mt-5 mb-3 text-muted">&copy; 2018 aeNigmanet</p>
             </a>
         </footer>

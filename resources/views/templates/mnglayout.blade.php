@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="{{asset('img/favicon.ico')}}">
 
-    <title>@yield('title','Admin Area')</title>
+    <title>@yield('title','Management Area')</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
@@ -25,9 +25,9 @@
         <p class="text-muted">@yield('sectionname')</p>
     </header>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info rounded">
         <!-- Brand -->
-        <a class="navbar-brand" href="dashboard"><span class="far fa-home"> </span> </a>
+        <a class="navbar-brand" href="{{'/manager/dashboard'}}"><span class="far fa-home"> </span> </a>
 
         <!-- Toggler/collapsibe Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -37,35 +37,20 @@
         <!-- Navbar links -->
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="listsdrop" data-toggle="dropdown">
+                        <span class="far fa-book"> </span> Lists
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{'/manager/blacklist'}}"><span class="far fa-lock"> </span> Black List</a>
+                        <a class="dropdown-item" href="#"><span class="far fa-lock-open"> </span> White List</a>
+                    </div>
+                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><span class="far fa-address-card"> </span> Users </a>
+                    <a class="nav-link" href="#"><span class="far fa-cogs"> </span> Policy </a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="policydrop" data-toggle="dropdown">
-                        <span class="far fa-book"> </span> Policy Management
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Actions</a>
-                        <a class="dropdown-item" href="#">Rules</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="listdrop" data-toggle="dropdown">
-                        <span class="far fa-list-alt"> </span> List Management
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Black List</a>
-                        <a class="dropdown-item" href="#">White List</a>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="managementdrop" data-toggle="dropdown">
-                        <span class="far fa-cogs"></span> Settings
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Options</a>
-                        <a class="dropdown-item" href="#">Backup</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><span class="far fa-address-book"> </span> Address book </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><span class="far fa-question-circle"> Help</span> </a>
@@ -84,9 +69,12 @@
 
 </div>
 
-<script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
-<script src="{{asset('js/popper.min.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
+@section('footer')
+    <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('js/tether-1.4.4.min.js')}}"></script>
+    <script src="{{asset('js/popper.min.js')}}"></script>
+    <script src="{{asset('js/bootstrap.min.js')}}"></script>
+@show
 
 </body>
 </html>

@@ -8,84 +8,64 @@
 
     <div class="row" style="margin-bottom: 20px;">
         <div class="col-sm-12 text-center">
-            <button class="btn btn-sm btn-primary">Add User</button>
+            <button class="btn btn-sm btn-primary">
+                <span class="far fa-plus-circle"></span> Add User
+            </button>
         </div>
     </div>
     <div class="row" style="margin-bottom: 20px;">
-        <div class="col-sm-6">
-            <div class="row text-center">
-                <div class="col-sm-12">
-                    <h4>Administrators</h4>
-                </div>
-            </div>
-            <div class="row text-left">
-                <div class="col-sm-12">
+        <div class="col-sm-12">
+
+                <ul id="users" class="list-group align-middle">
+
                     @foreach($admins as $admin)
-                        <div class="row">
+
+                        <li class="list-group-item">
+
                             @if($admin->is_enabled)
-                            <div class="col-sm-4">
-                                {{$admin->name}}
-                            </div>
+                            <div class="row">
                             @else
-                                <div class="col-sm-4 text-muted">
+                            <div class="row text-muted">
+                            @endif
+                                <div class="col-sm-3">
                                     {{$admin->name}}
                                 </div>
-                            @endif
-                                @if($admin->is_enabled)
-                                    <div class="col-sm-4">
-                                        enabled
-                                    </div>
-                                @else
-                                    <div class="col-sm-4 text-muted">
-                                        disabled
-                                    </div>
-                                @endif
-                            <div class="col-sm-4 text-right">
-                                <a href="#"><span class="far fa-pencil-alt text-success"></span></a>
-                                <a href="#" style="color: red; margin-left: 10px;"><span class="far fa-trash text-danger"></span></a>
+                                <div class="col-sm-5">
+                                    {{$admin->email}}
+                                </div>
+                                <div class="col-sm-2">
+                                    @if($admin->is_admin)
+                                        Administrator
+                                    @else
+                                        Operator
+                                    @endif
+                                </div>
+                                <div class="col-sm-1 text-right">
+                                <a class="btn btn-primary btn-sm" href="/admin/users/edit/{{$admin->id}}">
+                                    <span class="fa fa-pencil-alt"></span>
+                                </a>
                             </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="row text-center">
-                <div class="col-sm-12">
-                    <h4>Operators</h4>
-                </div>
-            </div>
-            <div class="row text-left">
-                <div class="col-sm-12">
-                    @foreach($operators as $operator)
-                        <div class="row">
-                            @if($operator->is_enabled)
-                                <div class="col-sm-4">
-                                    {{$operator->name}}
+                                <div class="col-sm-1 text-right">
+                                    <form action="{{ url('/admin/users/delete/'.$admin->id) }}" method="POST">
+                                        {!! csrf_field() !!}
+                                        {!! method_field('DELETE') !!}
+
+                                        <button class="btn btn-danger btn-sm"><span class="far fa-minus"></span></button>
+                                    </form>
                                 </div>
-                            @else
-                                <div class="col-sm-4 text-muted">
-                                    {{$operator->name}}
-                                </div>
-                            @endif
-                            @if($operator->is_enabled)
-                                <div class="col-sm-4">
-                                    enabled
-                                </div>
-                            @else
-                                <div class="col-sm-4 text-muted">
-                                    disabled
-                                </div>
-                            @endif
-                            <div class="col-sm-4 text-right">
-                                <a href="#"><span class="far fa-pencil-alt text-success"></span></a>
-                                <a href="#" style="color: red; margin-left: 10px;"><span class="far fa-trash text-danger"></span></a>
                             </div>
-                        </div>
+
+                        </li>
+
                     @endforeach
-                </div>
-            </div>
+
+                </ul>
+
         </div>
     </div>
+@endsection
 
-@stop
+@section('footer')
+    @parent
+
+@endsection
