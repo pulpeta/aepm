@@ -41,9 +41,11 @@ Route::get('/admin/backup', 'AdminController@backup')->name('backup');
 Route::get('/manager/dashboard', 'ManagerController@index');
 
 Route::get('/manager/whitelist','WhitelistController@index')->name('whitelist');
-//create white
-//edit white
-//delete white
+Route::get('/manager/whitelist/edit/{id}','WhitelistController@editdomain');
+Route::patch('/manager/whitelist/update/{id}', 'WhitelistController@updatedomain');
+Route::delete('/manager/whitelist/delete/{id}','WhitelistController@deletedomain');
+Route::get('/manager/whitelist/new', 'WhitelistController@newdomain');
+Route::post('/manager/whitelist/new', 'WhitelistController@adddomain');
 
 Route::get('/manager/blacklist','BlacklistController@index')->name('blacklist');
 Route::get('/manager/blacklist/edit/{id}','BlacklistController@editdomain');

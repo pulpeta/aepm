@@ -43,7 +43,7 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{{'/manager/blacklist'}}"><span class="far fa-lock"> </span> Black List</a>
-                        <a class="dropdown-item" href="#"><span class="far fa-lock-open"> </span> White List</a>
+                        <a class="dropdown-item" href="{{'/manager/whitelist'}}"><span class="far fa-lock-open"> </span> White List</a>
                     </div>
                 </li>
                 <li class="nav-item">
