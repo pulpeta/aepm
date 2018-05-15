@@ -49,8 +49,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#"><span class="far fa-cogs"> </span> Policy </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><span class="far fa-address-book"> </span> Address book </a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="listsdrop" data-toggle="dropdown">
+                        <span class="far fa-address-book"> </span> Address Book
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{'/manager/adgroup'}}"><span class="far fa-users"> </span> AD Groups</a>
+                        <a class="dropdown-item" href="{{'/manager/address'}}"><span class="far fa-envelope"> </span> Email Address</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><span class="far fa-question-circle"> Help</span> </a>

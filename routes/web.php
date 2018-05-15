@@ -53,13 +53,22 @@ Route::patch('/manager/blacklist/update/{id}', 'BlacklistController@updatedomain
 Route::delete('/manager/blacklist/delete/{id}','BlacklistController@deletedomain');
 Route::get('/manager/blacklist/new', 'BlacklistController@newdomain');
 Route::post('/manager/blacklist/new', 'BlacklistController@adddomain');
-//create black
 
+Route::get('/manager/adgroup','AdgroupController@index')->name('adgroup');
+Route::get('/manager/adgroup/edit/{id}','AdgroupController@editadgroup');
+Route::patch('/manager/adgroup/update/{id}', 'AdgroupController@updateadgroup');
+Route::delete('/manager/adgroup/delete/{id}','AdgroupController@deleteadgroup');
+Route::get('/manager/adgroup/new', 'AdgroupController@newadgroup');
+Route::post('/manager/adgroup/new', 'AdgroupController@addadgroup');
 
-//policy list get
-//policy create
-//policy edit
-//policy delete
+Route::get('/manager/address','AddressController@index')->name('address');
+Route::get('/manager/address/edit/{id}','AddressController@editaddress');
+Route::patch('/manager/address/update/{id}', 'AddressController@updateaddress');
+Route::delete('/manager/address/delete/{id}','AddressController@deleteaddress');
+Route::get('/manager/address/new', 'AddressController@newaddress');
+Route::post('/manager/address/new', 'AddressController@addaddress');
+
+//policy
 
 
 

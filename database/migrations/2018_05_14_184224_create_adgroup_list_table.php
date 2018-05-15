@@ -13,7 +13,7 @@ class CreateAdgroupListTable extends Migration
      */
     public function up()
     {
-        Schema::create('adgroup_list', function (Blueprint $table) {
+        Schema::create('adgroup_lists', function (Blueprint $table) {
             $table->increments('id');
             $table->string('adgroup_name',128);
             $table->string('description',128);
@@ -28,6 +28,6 @@ class CreateAdgroupListTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('adgroup_list');
+        Schema::dropIfExists('adgroup_lists');
     }
 }
