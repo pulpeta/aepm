@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 //use Symfony\Component\VarDumper\Dumper\DataDumperInterface;
 use App\Models\Admin\UserList;
 use App\Models\Admin\Dashboard;
+
 use Carbon\Carbon;
 
 class AdminController extends Controller
@@ -46,16 +47,6 @@ class AdminController extends Controller
 
     public function updateuser($id, Request $req){
 
-        /*$res = UserList::where('id', $id)->update(
-            [
-                'name' => request()->input('name'),
-                'email' => request()->input('email'),
-                'is_admin' => request()->input('is_admin'),
-                'is_enabled' => request()->input('is_enabled'),
-                'updated_at' => Carbon::now()
-            ]
-        );*/
-
         $user = UserList::find($id);
         $user->name = request()->input('name');
         $user->email = request()->input('email');
@@ -71,16 +62,6 @@ class AdminController extends Controller
     }
 
     public function adduser(){
-
-        /*$res = UserList::insert(
-            [
-                'name' => request()->input('name'),
-                'email' => request()->input('email'),
-                'is_admin' => request()->input('is_admin'),
-                'is_enabled' => 0,
-                'password' => bcrypt('123456')
-            ]
-        );*/
 
         $user = new UserList();
         $user->name = request()->input('name');

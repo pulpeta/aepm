@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Manager\Blacklist;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -64,8 +65,6 @@ class BlacklistController extends Controller
         $data = request()->only(['domain']);
         $data['user_id'] = 1;
         $data['created_at'] = carbon::now();
-
-        //$res = DB::table('blacklists')->insert($data);
 
         $res = Blacklist::create($data);
 

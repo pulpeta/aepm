@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLogsTable extends Migration
+class CreateAudittrailTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('logs', function (Blueprint $table) {
+        Schema::create('audittrails', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('event_type', 30);
-            $table->text('description');
-            $table->string('user', 30)->nullable();
-            $table->timestamp('added_on');
+            $table->string('event_type', 20);
+            $table->string('description', 50);
+            $table->integer('user_id');
+            $table->dateTime('date');
         });
     }
 
@@ -29,6 +29,6 @@ class CreateLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('logs');
+        Schema::dropIfExists('audittrails');
     }
 }
