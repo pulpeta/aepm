@@ -40,14 +40,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{'/admin/users'}}"><span class="far fa-address-card"> </span> Users </a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="policydrop" data-toggle="dropdown">
-                        <span class="far fa-book"> </span> Policy Management
-                    </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Actions</a>
-                        <a class="dropdown-item" href="#">Rules</a>
-                    </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{'/admin/options'}}"><span class="far fa-address-card"> </span> Options </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><span class="far fa-question-circle"> Help</span> </a>
@@ -60,7 +54,7 @@
         @yield('content')
     </div>
 
-    <footer class="footer text-center text-muted">
+    <footer class="footer text-center text-muted" style="margin-top: 30px;">
         aeGuardian - Corporate Policy Manager
     </footer>
 

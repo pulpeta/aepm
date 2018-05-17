@@ -46,8 +46,14 @@
                         <a class="dropdown-item" href="{{'/manager/whitelist'}}"><span class="far fa-lock-open"> </span> White List</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><span class="far fa-cogs"> </span> Policy </a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="listsdrop" data-toggle="dropdown">
+                        <span class="far fa-cogs"> </span> Policies
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{'/manager/policy'}}"><span class="far fa-wrench"> </span> Policy Management</a>
+                        <a class="dropdown-item" href="{{'/manager/policy/assignement'}}"><span class="far fa-arrow-alt-circle-right"> </span> Policy Assignement</a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="listsdrop" data-toggle="dropdown">
@@ -69,7 +75,7 @@
         @yield('content')
     </div>
 
-    <footer class="footer text-center text-muted">
+    <footer class="footer text-center text-muted" style="margin-top: 30px;">
         aeGuardian - Corporate Policy Manager
     </footer>
 

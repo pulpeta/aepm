@@ -24,7 +24,7 @@ class AdgroupController extends Controller
 
     public function deleteadgroup($id){
 
-        $res = DB::table('adgroup_lists')->where('id', $id)->delete();
+        $res = Adgroup_list::where('id', $id)->delete();
 
         return redirect()->back();
 

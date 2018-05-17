@@ -24,7 +24,7 @@ class AddressController extends Controller
 
     public function deleteaddress($id){
 
-        $res = DB::table('address_lists')->where('id', $id)->delete();
+        $res = Address_list::where('id', $id)->delete();
 
         return redirect()->back();
 

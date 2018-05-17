@@ -24,7 +24,7 @@ class BlacklistController extends Controller
 
     public function deletedomain($id){
 
-        $res = DB::table('blacklists')->where('id', $id)->delete();
+        $res = Blacklist::where('id', $id)->delete();
 
         return redirect()->back();
 

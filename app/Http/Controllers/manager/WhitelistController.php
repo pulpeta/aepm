@@ -24,7 +24,7 @@ class WhitelistController extends Controller
 
     public function deletedomain($id){
 
-        $res = DB::table('whitelists')->where('id', $id)->delete();
+        $res = Whitelist::where('id', $id)->delete();
 
         return redirect()->back();
 

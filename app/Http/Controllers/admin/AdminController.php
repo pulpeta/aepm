@@ -31,8 +31,7 @@ class AdminController extends Controller
 
     public function deleteuser($id){
 
-        $sql = 'DELETE fROM users where id = :id';
-        DB::delete($sql, ['id' => $id]);
+        $res = UserList::where('id', $id)->delete();
 
         return redirect()->back();
 
@@ -76,10 +75,18 @@ class AdminController extends Controller
     public function options(){
 
         return view('admin.admoptions');
+
+    }
+
+    public function uploadlicense(){
+
+
+
     }
 
     public function backup(){
 
         return view('admin.admbackup');
+
     }
 }

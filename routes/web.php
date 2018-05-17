@@ -30,10 +30,11 @@ Route::patch('/admin/users/update/{id}', 'AdminController@updateuser');
 Route::delete('/admin/users/delete/{id}', 'AdminController@deleteuser');
 
 Route::get('/admin/options', 'AdminController@options')->name('options');
+Route::post('/admin/uploadlicense','AdminController@uploadlicense');
+
 
 Route::get('/admin/backup', 'AdminController@backup')->name('backup');
 
-//gestione rubrica utenti (caricamento manuale primo step poi tramite ldap-gal)
 
 
 //-------------Manager-routes
@@ -68,6 +69,8 @@ Route::delete('/manager/address/delete/{id}','AddressController@deleteaddress');
 Route::get('/manager/address/new', 'AddressController@newaddress');
 Route::post('/manager/address/new', 'AddressController@addaddress');
 
+Route::get('/manager/policy','PolicyController@index')->name('policy');
+Route::delete('/manager/policy/delete/{id}','PolicyController@deletepolicy');
 //policy
 
 
