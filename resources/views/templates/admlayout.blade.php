@@ -44,6 +44,9 @@
                     <a class="nav-link" href="{{'/admin/options'}}"><span class="far fa-address-card"> </span> Options </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="#"><span class="far fa-tasks"> </span> Logs </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#"><span class="far fa-question-circle"> Help</span> </a>
                 </li>
             </ul>

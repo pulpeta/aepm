@@ -29,13 +29,17 @@
        <div class="col-sm-4"></div>
        <div class="col-sm-4 text-right">
            <a href="#" class="btn btn-sm btn-primary">
-               <span class="far fa-plus"></span> Add Policy
+               <span class="far fa-plus"></span> New Policy
            </a>
        </div>
    </div>
 
     <ul class="list-group">
+        @foreach($policy as $p)
+            <li class="list-group-item">
 
+            </li>
+        @endforeach
     </ul>
 
 @endsection
