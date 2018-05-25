@@ -37,7 +37,7 @@
 
         <footer>
             <a href="{{'/admin/dashboard'}}" class="text-muted" style="text-decoration: none;">
-                <p class="mt-5 mb-3 text-muted">&copy; 2018 aeNigmanet</p>
+                <p class="mt-5 mb-3 text-muted">&copy; 2018 aeGuardian</p>
             </a>
         </footer>
     </div>
