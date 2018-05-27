@@ -17,6 +17,7 @@ class CreateActionPolicyTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('action_id');
             $table->unsignedInteger('policy_id');
+            $table->integer('priority');
             $table->boolean('is_active')->default(1);
         });
 
