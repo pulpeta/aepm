@@ -37,7 +37,10 @@
     <ul class="list-group">
         @foreach($policy as $p)
             <li class="list-group-item">
-
+                {{$p->policy_name}}
+                {{$p->description}}
+                {{$p->is_enabled}}
+                {{$p->action}}
             </li>
         @endforeach
     </ul>

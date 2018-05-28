@@ -15,4 +15,5 @@ class PolicyController extends Controller
 
         return view('manager.mngpolicy', ['policy' => $policy]);
     }
+
 }

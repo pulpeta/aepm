@@ -17,7 +17,7 @@ class CreatePoliciesTable extends Migration
             $table->increments('id');
             $table->string('policy_name', 128);
             $table->text('description');
-            $table->boolean('is_enabeld');
+            $table->boolean('is_enabled');
             $table->timestamps();
         });
     }
