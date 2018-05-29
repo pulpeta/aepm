@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Action extends Model
 {
-return $this->belongsToMany('policies', 'action_policy', 'action_id','policy_id' );
+    public function policies(){
+
+        return $this->belongsToMany('Policy');
+
+    }
 
 }
