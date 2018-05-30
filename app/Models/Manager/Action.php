@@ -8,7 +8,7 @@ class Action extends Model
 {
     public function policies(){
 
-        return $this->belongsToMany('Policy');
+        return $this->belongsToMany('Policy', 'action_policy', 'action_id', 'policy_id');
 
     }
 

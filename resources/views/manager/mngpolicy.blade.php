@@ -34,13 +34,78 @@
        </div>
    </div>
 
+   <div class="accordion" id="accordion">
+       <div class="card mb-0">
+           @foreach($policy as $p)
+               <div class="card-header">
+                   <a style="text-decoration: none; color: black" class="card-title card-link"  data-toggle="collapse" href="#collapse{{$p->id}}">
+                       <h6>{{$p->policy_name}}</h6>
+                   </a>
+               </div>
+               <div id="collapse{{$p->id}}" class="collapse" data-parent="#accordion">
+                   <div class="container" style="padding-bottom: 20px;">
+                       <div class="row" style="margin-top: 10px;">
+                           <div class="col-sm-1 text-center">
+                               <a href="#" class="btn btn-sm btn-primary">
+                                   <span class="far fa-pencil-alt"></span>
+                               </a>
+                           </div>
+                           <div class="col-sm-8">
+                               {{$p->description}}
+                           </div>
+                           <div class="col-sm-3">
+                               @if($p->is_enabled)
+                                   Status: Enabled
+                               @else
+                                   Status: Disabled
+                               @endif
+                           </div>
+                       </div>
+                       <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
+                           <div class="col-sm-1 text-center">
+                               <a href="#" class="btn btn-sm btn-primary">
+                                   <span class="far fa-users"></span>
+                               </a>
+                           </div>
+                           <div class="col-sm-4">
+                               Created at: {{$p->created_at}}
+                           </div>
+                           <div class="col-sm-4">
+                               Last Update: {{$p->updated_at}}
+                           </div>
+                           <div class="col-sm-3"></div>
+                       </div>
+                       <div class="row" style="margin-top: 20px;">
+                           <div class="col-sm-1"></div>
+                           <div class="col-sm-11">
+                               <h6 class="text-success">Related Actions</h6>
+                           </div>
+                       </div>
+                       <div class="row">
+                           <div class="col-sm-1">
+
+                           </div>
+                           <div class="col-sm-4">
+                                Action Name:
+                           </div>
+                           <div class="col-sm-3">
+                                Priority
+                           </div>
+                           <div class="col-sm-4">
+                                Status
+                           </div>
+
+                       </div>
+
+                   </div>
+
+               </div>
+           @endforeach
+       </div>
+   </div>
+
     <ul class="list-group">
-        @foreach($policy as $p)
-            {{$p->policy_name}}
-            @foreach($policy->actions as $a)
-                {{$a->action}}
-            @endforeach
-        @endforeach
+
     </ul>
 
 @endsection
