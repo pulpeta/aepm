@@ -53,17 +53,24 @@
                            <div class="col-sm-8">
                                {{$p->description}}
                            </div>
-                           <div class="col-sm-3">
+                           <div class="col-sm-2">
                                @if($p->is_enabled)
                                    Status: Enabled
                                @else
                                    Status: Disabled
                                @endif
                            </div>
+                           <div class="col-sm-1 text-right">
+                               <form action="{{ url('/manager/policy/delete/'.$p->id) }}" method="POST">
+                                   {!! csrf_field() !!}
+                                   {!! method_field('DELETE') !!}
+                                   <button class="btn btn-danger btn-sm"><span class="far fa-minus"></span></button>
+                               </form>
+                           </div>
                        </div>
                        <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
                            <div class="col-sm-1 text-center">
-                               <a href="#" class="btn btn-sm btn-primary">
+                               <a href="#" class="btn btn-sm btn-success">
                                    <span class="far fa-users"></span>
                                </a>
                            </div>
@@ -94,8 +101,30 @@
                            <div class="col-sm-4">
                                 Status
                            </div>
-
                        </div>
+
+                       @foreach($list_act as $l)
+                           @if($p->id == $l->policy_id)
+                                <div class="row">
+                                    <div class="col-sm-1">
+
+                                    </div>
+                                    <div class="col-sm-4">
+                                        {{$l->action}}
+                                    </div>
+                                    <div class="col-sm-3">
+                                        {{$l->priority}}
+                                    </div>
+                                    <div class="col-sm-4">
+                                        @if($l->is_active)
+                                            Active
+                                        @else
+                                            Disabled
+                                        @endif
+                                    </div>
+                                </div>
+                           @endif
+                       @endforeach
 
                    </div>
 

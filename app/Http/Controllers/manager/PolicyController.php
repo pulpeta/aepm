@@ -11,29 +11,28 @@ class PolicyController extends Controller
 {
     public function index(Request $request){
 
-        $pol = Policy::orderBy('created_at', 'DESC')->get();
+        $policy = Policy::orderBy('created_at', 'DESC')->get();
         $query = 'select action_policy.*, actions.action  from actions right join action_policy on actions.id = action_policy.action_id order by action_policy.policy_id, action_policy.priority ASC';
-        $acts = DB::select($query);
+        $list_act = DB::select($query);
 
-        $policy = array();
+        return view('manager.mngpolicy', array('policy' => $policy, 'list_act' => $list_act));
+    }
 
-             foreach($pol as $p){
-                 $policy['id'][] = $p->id;
-                 $policy['policy_name'][] = $p->policy_name;
-                 $policy['description'][] = $p->description;
-                 $policy['is_enabled'][] = $p->is_enabled;
-                 $policy['created_at'][] = $p->created_at;
-                 $policy['updated_at'][] = $p->updated_at;
-                 foreach ($acts as $a){
-                     if($p->id == $a->policy_id){
-                         $policy['action']['action_name'][] = $a->action;
-                         $policy['action']['priority'][] = $a->priority;
-                         $policy['action']['is_active'][] = $a->is_active;
-                     }
-                 }
-             }
-            dd($policy);
-         //return view('manager.mngpolicy', ['policy' => $policy]);
+    public function deletepolicy($id){
+
+        //recupera id policy
+        //verifica che non sia ancora assegnata
+
+        //se assegnata non elimina e manda avviso
+
+        //se non assegnata elimina da tabella pivot le istanze con id policy
+        $sql='DELETE FROM action_policy where policy_id = :policy_id';
+        DB::delete($sql, [policy_id => $id]);
+
+        //elimina da tabella policies il
+        $res = Policy::where('id', $id)->delete();
+
+        return redirect()->back();
     }
 
 }
