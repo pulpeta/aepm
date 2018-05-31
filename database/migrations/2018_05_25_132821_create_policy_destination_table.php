@@ -13,7 +13,7 @@ class CreatePolicyDestinationTable extends Migration
      */
     public function up()
     {
-        Schema::create('policy_destination', function (Blueprint $table) {
+        Schema::create('account_policy', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('policy_id');
             $table->unsignedInteger('address_list_id');
@@ -21,9 +21,9 @@ class CreatePolicyDestinationTable extends Migration
         });
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        Schema::table('action_policy', function (Blueprint $table) {
+        Schema::table('account_policy', function (Blueprint $table) {
 
-            $table->foreign('act_policy_id')->references('id')->on('policies');
+            $table->foreign('policy_id')->references('id')->on('policies');
             $table->foreign('address_list_id')->references('id')->on('address_lists');
             $table->foreign('adgroup_list_id')->references('id')->on('adgroup_lists');
 

@@ -18,21 +18,41 @@ class PolicyController extends Controller
         return view('manager.mngpolicy', array('policy' => $policy, 'list_act' => $list_act));
     }
 
-    public function deletepolicy($id){
+    public function deletepolicy($policy_id){
 
-        //recupera id policy
-        //verifica che non sia ancora assegnata
-
-        //se assegnata non elimina e manda avviso
-
-        //se non assegnata elimina da tabella pivot le istanze con id policy
         $sql='DELETE FROM action_policy where policy_id = :policy_id';
-        DB::delete($sql, [policy_id => $id]);
+        DB::delete($sql, ['policy_id' => $policy_id]);
 
-        //elimina da tabella policies il
-        $res = Policy::where('id', $id)->delete();
+        $sql='DELETE FROM account_policy where policy_id = :policy_id';
+        DB::delete($sql, ['policy_id' => $policy_id]);
+
+        $res = Policy::where('id', $policy_id)->delete();
 
         return redirect()->back();
+    }
+
+    public function newpolicy(){
+
+
+
+    }
+
+    public function editpolicy(){
+
+
+
+    }
+
+    public function addaction(){
+
+
+
+    }
+
+    public function removeaction(){
+
+
+
     }
 
 }
