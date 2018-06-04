@@ -46,7 +46,7 @@
                    <div class="container" style="padding-bottom: 20px;">
                        <div class="row" style="margin-top: 10px;">
                            <div class="col-sm-1 text-center">
-                               <a href="#" class="btn btn-sm btn-primary">
+                               <a href="{{ url('/manager/policy/edit/'.$p->id) }}" class="btn btn-sm btn-primary">
                                    <span class="far fa-pencil-alt"></span>
                                </a>
                            </div>

@@ -71,6 +71,8 @@ Route::post('/manager/address/new', 'AddressController@addaddress');
 
 Route::get('/manager/policy','PolicyController@index')->name('policy');
 Route::delete('/manager/policy/delete/{id}','PolicyController@deletepolicy');
+Route::get('/manager/policy/edit/{id}','PolicyController@editpolicy');
+Route::patch('/manager/policy/update/{id}', 'PolicyController@updatepolicy');
 //policy
 
 

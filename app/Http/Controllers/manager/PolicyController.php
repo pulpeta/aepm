@@ -37,7 +37,19 @@ class PolicyController extends Controller
 
     }
 
-    public function editpolicy(){
+    public function editpolicy($policy_id){
+
+        $pol = Policy::find($policy_id);
+
+        $act = DB::table('action_policy')
+            ->join('actions', 'action_id', '=', 'actions.id')
+            ->where('policy_id', $policy_id)->get();
+
+        return view('manager.mngeditpolicy', array('pol' => $pol, 'act' => $act));
+
+    }
+
+    public function updatepolicy(){
 
 
 
