@@ -37,15 +37,23 @@ class PolicyController extends Controller
 
     }
 
+    public function savepolicy(){
+
+
+
+    }
+
     public function editpolicy($policy_id){
 
-        $pol = Policy::find($policy_id);
+        //$policy = Policy::find($policy_id);
+        $policy = DB::table('policies')->where('id', $policy_id)->get();
 
-        $act = DB::table('action_policy')
+        $action = DB::table('action_policy')
             ->join('actions', 'action_id', '=', 'actions.id')
+            ->orderby('priority', 'ASC')
             ->where('policy_id', $policy_id)->get();
 
-        return view('manager.mngeditpolicy', array('pol' => $pol, 'act' => $act));
+        return view('manager.mngeditpolicy', array('policy' => $policy, 'action' => $action));
 
     }
 
