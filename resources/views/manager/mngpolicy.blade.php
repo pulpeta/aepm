@@ -117,9 +117,9 @@
                                     </div>
                                     <div class="col-sm-4">
                                         @if($l->is_active)
-                                            Active
+                                            <p class="text-success">Active</p>
                                         @else
-                                            Disabled
+                                            <p class="text-warning">Disabled</p>
                                         @endif
                                     </div>
                                 </div>

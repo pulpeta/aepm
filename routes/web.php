@@ -70,9 +70,12 @@ Route::get('/manager/address/new', 'AddressController@newaddress');
 Route::post('/manager/address/new', 'AddressController@addaddress');
 
 Route::get('/manager/policy','PolicyController@index')->name('policy');
+Route::patch('/manager/policy/enablepolicy/{id}', 'PolicyController@enablepolicy');
 Route::delete('/manager/policy/delete/{id}','PolicyController@deletepolicy');
 Route::get('/manager/policy/edit/{id}','PolicyController@editpolicy');
 Route::patch('/manager/policy/update/{id}', 'PolicyController@updatepolicy');
+Route::delete('/manager/policy/removeaction/{id}','PolicyController@removeaction');
+Route::patch('/manager/policy/activeaction/{id}', 'PolicyController@activeaction');
 //policy
 
 
