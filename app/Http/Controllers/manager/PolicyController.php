@@ -48,12 +48,12 @@ class PolicyController extends Controller
         //$policy = Policy::find($policy_id);
         $policy = DB::table('policies')->where('id', $policy_id)->get();
 
-        $list_action = DB::table('actions')->orderby('action', 'ASC')->get();
-
         $action = DB::table('action_policy')
             ->join('actions', 'action_id', '=', 'actions.id')
             ->orderby('priority', 'ASC')
             ->where('policy_id', $policy_id)->get();
+
+        $list_action = DB::table('actions')->orderby('action', 'ASC')->get();
 
         return view('manager.mngeditpolicy', array('policy' => $policy, 'action' => $action, 'list_action' => $list_action));
 
