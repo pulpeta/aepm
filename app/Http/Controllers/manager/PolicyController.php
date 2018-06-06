@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Manager\Policy;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class PolicyController extends Controller
 {
@@ -58,7 +59,15 @@ class PolicyController extends Controller
 
     public function updatepolicy($id){
 
+        Policy::where('id', $id)->update(
+            [
+                'policy_name' => request()->input('policy_name'),
+                'description' => request()->input('description'),
+                'updated_at' => Carbon::now()
+            ]
+        );
 
+        return redirect()->back();
 
     }
 
@@ -154,6 +163,16 @@ class PolicyController extends Controller
                     break;
             }
         }
+
+        return redirect()->back();
+
+    }
+
+    public function updateactionpriority($id, Request $request){
+
+        DB::table('action_policy')
+            ->where('id', $id)
+            ->update(['priority' => request()->input('priority')]);
 
         return redirect()->back();
 

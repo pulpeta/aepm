@@ -37,7 +37,7 @@ class BlacklistController extends Controller
 
     }
 
-    public function updatedomain($id, Request $req){
+    public function updatedomain($id){
 
         $res = Blacklist::where('id', $id)->update(
             [

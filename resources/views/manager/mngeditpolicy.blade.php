@@ -87,7 +87,7 @@
                 @foreach($action as $a)
                     <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
                         <div class="col-sm-1">
-                            <form action="{{ url('/manager/policy/activeaction/'.$a->id) }}" method="POST">
+                            <form action="{{ url('/manager/policy/activeaction/'.$a->id) }}" method="POST" class="form-group">
 
                                 {!! csrf_field() !!}
                                 {!! method_field('PATCH') !!}
@@ -100,8 +100,12 @@
                             </form>
                         </div>
                         <div class="col-sm-2">
-                            <form class="form-inline">
-                                <input  name="priority" class="form-control form-control-sm mb-2 mr-sm-2" value="{{$a->priority}}" style="max-width: 30px;">
+                            <form class="form-inline" action="{{ url('/manager/policy/setactionpriority/'.$a->id) }}" method="POST">
+
+                                {!! csrf_field() !!}
+                                {!! method_field('PATCH') !!}
+
+                                <input  name="priority" id="priority" class="form-control form-control-sm mb-2 mr-sm-2" value="{{$a->priority}}" style="max-width: 30px;">
                                 <button class="btn btn-sm btn-primary mb-2 mr-sm-2"><span class="fa fa-check-circle"></span></button>
                             </form>
                         </div>

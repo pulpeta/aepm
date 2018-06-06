@@ -80,6 +80,7 @@ Route::get('/manager/policy/edit/{id}','PolicyController@editpolicy');
 Route::post('/manager/policy/addaction/{id}', 'PolicyController@addaction');
 Route::patch('/manager/policy/update/{id}', 'PolicyController@updatepolicy');
 Route::patch('/manager/policy/enablepolicy/{id}', 'PolicyController@enablepolicy');
+Route::patch('/manager/policy/setactionpriority/{id}', 'PolicyController@updateactionpriority');
 Route::patch('/manager/policy/activeaction/{id}', 'PolicyController@activeaction');
 Route::delete('/manager/policy/delete/{id}','PolicyController@deletepolicy');
 Route::delete('/manager/policy/removeaction/{id}','PolicyController@removeaction');
