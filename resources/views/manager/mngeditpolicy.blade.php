@@ -32,6 +32,7 @@
                     <input class="form-control mb-2 mr-sm-2" type="text" name="description" id="description" value="{{ $p->description }}">
 
                     <button class="btn btn-primary mb-2">Update</button>
+
                 </form>
             </div>
         </div>
@@ -57,9 +58,12 @@
             </div>
             <div class="col-sm-11 text-center">
                 <form class="form-inline"  action="{{url ('/manager/policy/addaction/'.$p->id) }}" method="post" name="addaction">
-                    <select class="form-control mb-2 mr-sm-2">
+
+                    {{csrf_field()}}
+
+                    <select class="form-control mb-2 mr-sm-2" name="action_id">
                         @foreach($list_action as $l)
-                            <option value="{{$l->id}}">{{$l->action}}</option>
+                            <option value="{{$l->id}}" >{{$l->action}}</option>
                         @endforeach
                     </select>
                     <button class="btn btn-primary mb-2"><span class="fa fa-plus"></span></button>
@@ -83,7 +87,7 @@
                 @foreach($action as $a)
                     <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
                         <div class="col-sm-1">
-                            <form action="{{ url('/manager/policy/activeaction/'.$a->id) }}" method="POST" name="activeaction">
+                            <form action="{{ url('/manager/policy/activeaction/'.$a->id) }}" method="POST">
 
                                 {!! csrf_field() !!}
                                 {!! method_field('PATCH') !!}
@@ -97,7 +101,7 @@
                         </div>
                         <div class="col-sm-2">
                             <form class="form-inline">
-                                <input class="form-control form-control-sm mb-2 mr-sm-2" value="{{$a->priority}}" style="max-width: 30px;">
+                                <input  name="priority" class="form-control form-control-sm mb-2 mr-sm-2" value="{{$a->priority}}" style="max-width: 30px;">
                                 <button class="btn btn-sm btn-primary mb-2 mr-sm-2"><span class="fa fa-check-circle"></span></button>
                             </form>
                         </div>
@@ -105,7 +109,7 @@
                             {{$a->action}}
                         </div>
                         <div class="col-sm-6 text-left">
-                            <form action="{{ url('/manager/policy/removeaction/'.$a->id) }}" method="POST" name="removeaction">
+                            <form action="{{ url('/manager/policy/removeaction/'.$a->id) }}" method="POST">
 
                                 {!! csrf_field() !!}
                                 {!! method_field('DELETE') !!}

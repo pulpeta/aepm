@@ -46,7 +46,7 @@ class BlacklistController extends Controller
                 'updated_at' => Carbon::now()
             ]
         );
-        //verifica se l'operazione è andata a buon fine e genera messaggio
+
         $message = $res ? 'Domain: '. request()->input('domain') .' updated' : 'Domain: '. request()->input('domain') .' not updated';
 
         session()->flash('message', $message);
