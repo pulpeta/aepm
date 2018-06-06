@@ -121,9 +121,7 @@ class PolicyController extends Controller
                 ->update(['is_active' => 1]);
         }
 
-        return redirect('/manager/policy/edit/'.$id);
-
-        //return redirect()->back();
+        return redirect()->back();
 
     }
 

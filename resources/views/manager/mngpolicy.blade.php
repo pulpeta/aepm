@@ -39,7 +39,12 @@
            @foreach($policy as $p)
                <div class="card-header">
                    <a style="text-decoration: none; color: black" class="card-title card-link"  data-toggle="collapse" href="#collapse{{$p->id}}">
-                       <h6>{{$p->policy_name}}</h6>
+
+                       @if($p->is_enabled)
+                           <h6 class="text-success">{{$p->policy_name}}</h6>
+                       @else
+                           <h6 class="text-warning">{{$p->policy_name}}</h6>
+                       @endif
                    </a>
                </div>
                <div id="collapse{{$p->id}}" class="collapse" data-parent="#accordion">
@@ -55,9 +60,9 @@
                            </div>
                            <div class="col-sm-2">
                                @if($p->is_enabled)
-                                   Status: Enabled
+                                   <p class="text-success">Enabled</p>
                                @else
-                                   Status: Disabled
+                                   <p class="text-warning">Disabled</p>
                                @endif
                            </div>
                            <div class="col-sm-1 text-right">

@@ -22,7 +22,7 @@
                 </form>
             </div>
             <div class="col-sm-11 text-left">
-                <form class="form-inline" action="{{url ('/manager/policy/update/'.$p->id) }}" method="post">
+                <form class="form-inline" action="{{url ('/manager/policy/update/'.$p->id) }}" method="post" name="update">
 
                     {{csrf_field()}}
                     {!! method_field('PATCH') !!}
@@ -51,44 +51,40 @@
                 </div>
         </div>
 
-        <div class="row" style="margin-top: 30px">
-            <div class="col-sm-12">
-                <h6>Related Actions</h6>
+        <div class="row" style="margin-top: 30px;">
+            <div class="col-sm-1">
+
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-3">
-                <form class="form-group">
-
+            <div class="col-sm-11 text-center">
+                <form class="form-inline"  action="{{url ('/manager/policy/addaction/'.$p->id) }}" method="post" name="addaction">
                     <select class="form-control mb-2 mr-sm-2">
                         @foreach($list_action as $l)
                             <option value="{{$l->id}}">{{$l->action}}</option>
                         @endforeach
                     </select>
-
-                    <button class="btn btn-primary mb-2">Add Action</button>
+                    <button class="btn btn-primary mb-2"><span class="fa fa-plus"></span></button>
                 </form>
             </div>
-            <div class="col-sm-9">
-                <div class="row">
-                    <div class="col-sm-1">
+        </div>
 
-                    </div>
-                    <div class="col-sm-3">
-                        Priority
-                    </div>
-                    <div class="col-sm-9">
-                        Action
-                    </div>
-                    <div class="col-sm-1">
+        <div class="row" style="margin-top: 30px">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-11">
+                <h6>Related Actions</h6>
+            </div>
+        </div>
 
-                    </div>
-                </div>
+        <div class="row">
+            <div class="col-sm-1">
+
+            </div>
+            <div class="col-sm-11">
+
                 @foreach($action as $a)
                     <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
                         <div class="col-sm-1">
                             <form action="{{ url('/manager/policy/activeaction/'.$a->id) }}" method="POST" name="activeaction">
+
                                 {!! csrf_field() !!}
                                 {!! method_field('PATCH') !!}
 
@@ -99,20 +95,22 @@
                                 @endif
                             </form>
                         </div>
-                        <div class="col-sm-3">
-                            <form>
-                                <input value="{{$a->priority}}">
-                                <button>Update</button>
+                        <div class="col-sm-2">
+                            <form class="form-inline">
+                                <input class="form-control form-control-sm mb-2 mr-sm-2" value="{{$a->priority}}" style="max-width: 30px;">
+                                <button class="btn btn-sm btn-primary mb-2 mr-sm-2"><span class="fa fa-check-circle"></span></button>
                             </form>
                         </div>
                         <div class="col-sm-3">
                             {{$a->action}}
                         </div>
-                        <div class="col-sm-1 text-left">
+                        <div class="col-sm-6 text-left">
                             <form action="{{ url('/manager/policy/removeaction/'.$a->id) }}" method="POST" name="removeaction">
+
                                 {!! csrf_field() !!}
                                 {!! method_field('DELETE') !!}
-                                <button class="btn btn-danger btn-sm"><span class="far fa-minus"></span></button>
+
+                                <button class="btn btn-danger btn-sm mb-2 mr-sm-2"><span class="far fa-minus"></span></button>
                             </form>
                         </div>
                     </div>
