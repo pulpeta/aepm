@@ -28,7 +28,7 @@
        </div>
        <div class="col-sm-4"></div>
        <div class="col-sm-4 text-right">
-           <a href="#" class="btn btn-sm btn-primary">
+           <a href="{{ url('/manager/policy/new') }}" class="btn btn-sm btn-primary">
                <span class="far fa-plus"></span> New Policy
            </a>
        </div>
@@ -67,8 +67,10 @@
                            </div>
                            <div class="col-sm-1 text-right">
                                <form action="{{ url('/manager/policy/delete/'.$p->id) }}" method="POST">
+
                                    {!! csrf_field() !!}
                                    {!! method_field('DELETE') !!}
+
                                    <button class="btn btn-danger btn-sm"><span class="far fa-minus"></span></button>
                                </form>
                            </div>

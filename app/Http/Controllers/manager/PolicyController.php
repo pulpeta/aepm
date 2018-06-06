@@ -34,13 +34,26 @@ class PolicyController extends Controller
 
     public function newpolicy(){
 
-
+        return view('manager.mngcreatepolicy');
 
     }
 
-    public function savepolicy(){
+    public function savepolicy(Request $request){
 
+        $data['policy_name'] = request()->input('policy_name');
+        $data['description'] = request()->input('description');
+        $data['is_enabled'] = 0;
+        $data['created_at'] = carbon::now();
 
+        Policy::create($data);
+
+        $id_policy = DB::select('SELECT id FROM policies ORDER BY id DESC LIMIT 1');
+
+        foreach($id_policy as $i){
+            $id = $i->id;
+        }
+
+        return redirect()->route('edit_policy', ['id' => $id]);
 
     }
 

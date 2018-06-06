@@ -8,6 +8,15 @@
 
     @foreach($policy as $p)
 
+        <div class="row" style="margin-bottom: 30px;">
+            <div class="col-sm-1">
+
+            </div>
+            <div class="col-sm-11 text-left">
+                <a href="{{ url ('/manager/policy') }}" class="btn btn-primary">Back</a>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-sm-1 text-left">
                 <form action="{{ url('/manager/policy/enablepolicy/'.$p->id) }}" method="POST" name="enablepolicy">
@@ -105,7 +114,7 @@
                                 {!! csrf_field() !!}
                                 {!! method_field('PATCH') !!}
 
-                                <input  name="priority" id="priority" class="form-control form-control-sm mb-2 mr-sm-2" value="{{$a->priority}}" style="max-width: 30px;">
+                                <input  name="priority" id="priority" class="form-control form-control-sm mb-2 mr-sm-2 text-right" value="{{$a->priority}}" style="max-width: 50px;">
                                 <button class="btn btn-sm btn-primary mb-2 mr-sm-2"><span class="fa fa-check-circle"></span></button>
                             </form>
                         </div>
