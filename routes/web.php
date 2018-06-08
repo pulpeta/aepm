@@ -27,22 +27,16 @@ Route::get('/admin/dashboard', 'AdminController@index');
 
 Route::get('/admin/users', 'AdminController@users')->name('users');
 Route::get('/admin/users/edit/{id}', 'AdminController@edituser');
+Route::get('/admin/options', 'AdminController@options')->name('options');
+Route::get('/admin/backup', 'AdminController@backup')->name('backup');
+Route::post('/admin/uploadlicense','AdminController@uploadlicense');
 Route::patch('/admin/users/update/{id}', 'AdminController@updateuser');
 Route::delete('/admin/users/delete/{id}', 'AdminController@deleteuser');
-
-
-Route::get('/admin/options', 'AdminController@options')->name('options');
-Route::post('/admin/uploadlicense','AdminController@uploadlicense');
-
-
-Route::get('/admin/backup', 'AdminController@backup')->name('backup');
-
 
 
 //-------------Manager-routes
 
 Route::get('/manager/dashboard', 'ManagerController@index');
-
 Route::get('/manager/whitelist','WhitelistController@index')->name('whitelist');
 Route::get('/manager/whitelist/edit/{id}','WhitelistController@editdomain');
 Route::get('/manager/whitelist/new', 'WhitelistController@newdomain');
@@ -78,6 +72,7 @@ Route::delete('/manager/address/delete/{id}','AddressController@deleteaddress');
 Route::get('/manager/policy','PolicyController@index')->name('policy');
 Route::get('/manager/policy/edit/{id}','PolicyController@editpolicy')->name('edit_policy');
 Route::get('/manager/policy/new','PolicyController@newpolicy');
+Route::get('/manager/policy/assignment','PolicyController@policyassignment');
 Route::post('/manager/policy/new','PolicyController@savepolicy');
 Route::post('/manager/policy/addaction/{id}', 'PolicyController@addaction');
 Route::patch('/manager/policy/update/{id}', 'PolicyController@updatepolicy');

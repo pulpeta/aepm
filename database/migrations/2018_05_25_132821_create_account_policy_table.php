@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePolicyDestinationTable extends Migration
+class CreateAccountPolicyTable extends Migration
 {
     /**
      * Run the migrations.
@@ -38,6 +38,7 @@ class CreatePolicyDestinationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('policy_destination');
+        Schema::dropIfExists('policy_assignment');
     }
+
 }

@@ -21,9 +21,9 @@
             {{csrf_field()}}
 
             <div class="form-group">
-                <label for="adgroup">Domain</label>
+                <label for="adgroup">AD Group</label>
                 <input type="text" name="adgroup_name" id="adgroup_name" placeholder="Insert an AD Group name" class="form-control">
-                <label for="description">Domain</label>
+                <label for="description">Description</label>
                 <input type="text" name="description" id="description" placeholder="Description" class="form-control">
             </div>
             <div class="form-group text-center">

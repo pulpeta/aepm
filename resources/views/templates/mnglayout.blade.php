@@ -52,7 +52,7 @@
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="{{'/manager/policy'}}"><span class="far fa-wrench"> </span> Policy Management</a>
-                        <a class="dropdown-item" href="{{'/manager/policy/assignement'}}"><span class="far fa-arrow-alt-circle-right"> </span> Policy Assignement</a>
+                        <a class="dropdown-item" href="{{'/manager/policy/assignment'}}"><span class="far fa-arrow-alt-circle-right"> </span> Policy Assignement</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">

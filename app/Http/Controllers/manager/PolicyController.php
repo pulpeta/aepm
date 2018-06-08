@@ -191,4 +191,18 @@ class PolicyController extends Controller
 
     }
 
+    public function policyassignment(){
+
+        $policy = Policy::orderBy('created_at', 'DESC')->get();
+
+        $query = 'select account_policy.*, adgroup_lists.adgroup_name  from adgroup_lists right join account_policy on adgroup_lists.id = account_policy.adgroup_list_id order by account_policy.policy_id ASC';
+        $adgroup = DB::select($query);
+
+        $query = 'select account_policy.*, address_lists.email  from address_lists right join account_policy on address_lists.id = account_policy.address_list_id order by account_policy.policy_id ASC';
+        $address = DB::select($query);
+
+        return view('manager.mngpolicyassignment', array('policy' => $policy, 'adgroup' => $adgroup, 'address' => $address));
+
+    }
+
 }
