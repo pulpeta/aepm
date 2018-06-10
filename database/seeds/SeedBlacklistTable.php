@@ -14,28 +14,12 @@ class SeedBlacklistTable extends Seeder
     {
         $sql = 'INSERT INTO blacklists (domain, user_id, created_at) values (:domain, :user_id, :created_at)';
 
-        DB::statement($sql, [
-            'domain' => 'Black Domain 1',
-            'user_id' => 1,
-            'created_at' => Carbon::now()
-        ]);
-
-        DB::statement($sql, [
-            'domain' => 'Black Domain 2',
-            'user_id' => 1,
-            'created_at' => Carbon::now()
-        ]);
-
-        DB::statement($sql, [
-            'domain' => 'Black Domain 3',
-            'user_id' => 1,
-            'created_at' => Carbon::now()
-        ]);
-
-        DB::statement($sql, [
-            'domain' => 'Black Domain 4',
-            'user_id' => 1,
-            'created_at' => Carbon::now()
-        ]);
+        for ($i=0; $i <10; ++$i){
+            DB::statement($sql, [
+                'domain' => 'Black Domain '.$i,
+                'user_id' => 1,
+                'created_at' => Carbon::now()
+            ]);
+        }
     }
 }

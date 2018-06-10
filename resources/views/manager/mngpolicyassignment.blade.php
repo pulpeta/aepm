@@ -37,70 +37,24 @@
            @foreach($policy as $p)
                <div class="card-header">
                    <a style="text-decoration: none; color: black" class="card-title card-link"  data-toggle="collapse" href="#collapse{{$p->id}}">
-
-                       @if($p->is_enabled)
-                           <h6 class="text-success">{{$p->policy_name}}</h6>
-                       @else
-                           <h6 class="text-warning">{{$p->policy_name}}</h6>
-                       @endif
+                       <h6 class="text-primary">{{$p->policy_name}}</h6>
                    </a>
                </div>
                <div id="collapse{{$p->id}}" class="collapse" data-parent="#accordion">
                    <div class="container" style="padding-bottom: 20px;">
                        <div class="row" style="margin-top: 10px;">
-                           <div class="col-sm-1 text-center">
+                           <div class="col-sm-6">
+
+
 
                            </div>
-                           <div class="col-sm-8">
-                               {{$p->description}}
-                           </div>
-                           <div class="col-sm-2">
-                               @if($p->is_enabled)
-                                   <p class="text-success">Enabled</p>
-                               @else
-                                   <p class="text-warning">Disabled</p>
-                               @endif
-                           </div>
-                           <div class="col-sm-1 text-right">
+                           <div class="col-sm-6">
+
+
 
                            </div>
                        </div>
-                       <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
-                           <div class="col-sm-1 text-center">
-
-                           </div>
-                           <div class="col-sm-4">
-                               Created at: {{$p->created_at}}
-                           </div>
-                           <div class="col-sm-4">
-                               Last Update: {{$p->updated_at}}
-                           </div>
-                           <div class="col-sm-3"></div>
-                       </div>
-                       <div class="row" style="margin-top: 20px;">
-                           <div class="col-sm-1"></div>
-                           <div class="col-sm-11">
-                               <h6 class="text-success">Related Actions</h6>
-                           </div>
-                       </div>
-                       <div class="row">
-                           <div class="col-sm-1">
-
-                           </div>
-                           <div class="col-sm-4">
-                                Action Name:
-                           </div>
-                           <div class="col-sm-3">
-                                Priority
-                           </div>
-                           <div class="col-sm-4">
-                                Status
-                           </div>
-                       </div>
-
-
                    </div>
-
                </div>
            @endforeach
        </div>

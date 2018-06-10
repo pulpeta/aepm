@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 
-class SeedWhitelistTable extends Seeder
+class SeedAdgroupTable extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,12 +12,12 @@ class SeedWhitelistTable extends Seeder
      */
     public function run()
     {
-        $sql = 'INSERT INTO whitelists (domain, user_id, created_at) values (:domain, :user_id, :created_at)';
+        $sql = 'INSERT INTO adgroup_lists (adgroup_name, description, created_at) values (:adgroup_name, :description, :created_at)';
 
         for ($i=0; $i <10; ++$i){
             DB::statement($sql, [
-                'domain' => 'White Domain '.$i,
-                'user_id' => 1,
+                'adgroup_name' => 'Group '.$i,
+                'description' => 'Group '.$i,
                 'created_at' => Carbon::now()
             ]);
         }

@@ -13,29 +13,13 @@ class SeedPolicyTable extends Seeder
     {
         $sql = 'INSERT INTO policies (policy_name, description, is_enabled) values (:policy_name, :description, :is_enabled)';
 
-        DB::statement($sql, [
-            'policy_name' => 'Policy 1',
-            'description' => 'Policy description 1',
-            'is_enabled' => 1
-        ]);
-
-        DB::statement($sql, [
-            'policy_name' => 'Policy 2',
-            'description' => 'Policy description 2',
-            'is_enabled' => 1
-        ]);
-
-        DB::statement($sql, [
-            'policy_name' => 'Policy 3',
-            'description' => 'Policy description 3',
-            'is_enabled' => 1
-        ]);
-
-        DB::statement($sql, [
-            'policy_name' => 'Policy 4',
-            'description' => 'Policy description 4',
-            'is_enabled' => 1
-        ]);
+        for ($i=0; $i <10; ++$i){
+            DB::statement($sql, [
+                'policy_name' => 'Policy '.$i,
+                'description' => 'Policy description '.$i,
+                'is_enabled' => 1
+            ]);
+        }
 
         $sql2='INSERT INTO action_policy (action_id, policy_id, priority, is_active) values (:action_id, :policy_id, :priority, :is_active)';
 
