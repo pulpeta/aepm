@@ -43,15 +43,40 @@
                <div id="collapse{{$p->id}}" class="collapse" data-parent="#accordion">
                    <div class="container" style="padding-bottom: 20px;">
                        <div class="row" style="margin-top: 10px;">
+                           <div class="col-sm-12">
+                               <a href="{{ url('/manager/policy/assign/'.$p->id) }}" class="btn btn-sm btn-success">
+                                   <span class="far fa-users"></span> Assign
+                               </a>
+                           </div>
+                       </div>
+                       <div class="row" style="margin-top: 10px;">
                            <div class="col-sm-6">
-
-
-
+                               <ul class="list-group">
+                                   <li class="list-group-item list-group-item-info">
+                                       <h6>Active Directory Groups</h6>
+                                   </li>
+                                   @foreach($adgroup as $ad)
+                                       @if($ad->policy_id == $p->id)
+                                           <li class="list-group-item">
+                                               {{$ad->adgroup_name}}
+                                           </li>
+                                       @endif
+                                   @endforeach
+                               </ul>
                            </div>
                            <div class="col-sm-6">
-
-
-
+                               <ul class="list-group">
+                                   <li class="list-group-item list-group-item-info">
+                                       <h6>Email Addresses</h6>
+                                   </li>
+                                   @foreach($address as $a)
+                                       @if($a->policy_id == $p->id)
+                                           <li class="list-group-item">
+                                               {{$a->email}}
+                                           </li>
+                                       @endif
+                                   @endforeach
+                               </ul>
                            </div>
                        </div>
                    </div>

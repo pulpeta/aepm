@@ -195,13 +195,33 @@ class PolicyController extends Controller
 
         $policy = Policy::orderBy('created_at', 'DESC')->get();
 
-        $query = 'select account_policy.*, adgroup_lists.adgroup_name  from adgroup_lists right join account_policy on adgroup_lists.id = account_policy.adgroup_list_id order by account_policy.policy_id ASC';
+        $query = 'select account_policy.*, adgroup_lists.adgroup_name  from adgroup_lists right join account_policy on adgroup_lists.id = account_policy.adgroup_list_id where account_policy.address_list_id = 0 order by account_policy.policy_id ASC';
         $adgroup = DB::select($query);
 
-        $query = 'select account_policy.*, address_lists.email  from address_lists right join account_policy on address_lists.id = account_policy.address_list_id order by account_policy.policy_id ASC';
+        $query = 'select account_policy.*, address_lists.email  from address_lists right join account_policy on address_lists.id = account_policy.address_list_id where account_policy.adgroup_list_id = 0 order by account_policy.policy_id ASC';
         $address = DB::select($query);
 
         return view('manager.mngpolicyassignment', array('policy' => $policy, 'adgroup' => $adgroup, 'address' => $address));
+    }
+
+    public function assign_policy($id){
+
+        $query = 'select policy_name from policies where id = '.$id;
+        $name = DB::select($query);
+
+        $query = 'select account_policy.*, adgroup_lists.adgroup_name  from adgroup_lists right join account_policy on adgroup_lists.id = account_policy.adgroup_list_id where account_policy.address_list_id = 0 order by account_policy.policy_id ASC';
+        $adgroup = DB::select($query);
+
+        $query = 'select account_policy.*, address_lists.email  from address_lists right join account_policy on address_lists.id = account_policy.address_list_id where account_policy.adgroup_list_id = 0 order by account_policy.policy_id ASC';
+        $address = DB::select($query);
+
+        $query = 'select * from adgroup_lists order by adgroup_name ASC';
+        $adg = DB::select($query);
+
+        $query = 'select * from address_lists order by email ASC';
+        $addr = DB::select($query);
+
+        return view('manager.mngassignpolicy', array('name' => $name, 'adgroup' => $adgroup, 'address' => $address, 'adg' => $adg, 'addr' => $addr));
 
     }
 

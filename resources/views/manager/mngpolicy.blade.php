@@ -77,7 +77,7 @@
                        </div>
                        <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
                            <div class="col-sm-1 text-center">
-                               <a href="#" class="btn btn-sm btn-success">
+                               <a href="{{ url('/manager/policy/assign/'.$p->id) }}" class="btn btn-sm btn-success">
                                    <span class="far fa-users"></span>
                                </a>
                            </div>

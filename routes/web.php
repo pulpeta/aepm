@@ -73,6 +73,7 @@ Route::get('/manager/policy','PolicyController@index')->name('policy');
 Route::get('/manager/policy/edit/{id}','PolicyController@editpolicy')->name('edit_policy');
 Route::get('/manager/policy/new','PolicyController@newpolicy');
 Route::get('/manager/policy/assignment','PolicyController@policyassignment');
+Route::get('/manager/policy/assign/{id}', 'PolicyController@assign_policy');
 Route::post('/manager/policy/new','PolicyController@savepolicy');
 Route::post('/manager/policy/addaction/{id}', 'PolicyController@addaction');
 Route::patch('/manager/policy/update/{id}', 'PolicyController@updatepolicy');
