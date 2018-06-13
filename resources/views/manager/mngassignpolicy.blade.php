@@ -21,28 +21,70 @@
         </div>
         <div class="row">
             <div class="col-sm-6" style="padding: 10px;">
-                <ul class="list-group">
-                    @foreach($adg as $a)
-                        <li class="list-group-item">
-                            <input type="checkbox" disabled style="margin-right: 10px;">{{$a->adgroup_name}}
-                            <div style="float: right">
-                                <a class="btn btn-sm btn-primary text-white">set</a>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
+
+                <form class="form-group" method="post" action="/manager/policy/update_grp_assignments/{{$name[0]->id}}">
+
+                    {{csrf_field()}}
+                    {!! method_field('PATCH') !!}
+
+                    <input type="hidden" name="policy_id" value="{{$name[0]->id}}">
+
+                    <ul class="list-group form-control-sm">
+                        @foreach($adg as $a)
+
+                            <li class="list-group-item">
+                                <input name = "adg{{$a->id}}" type="checkbox"
+                                @foreach($adgroup as $ad)
+                                    @if($ad->adgroup_list_id == $a->id)
+                                        checked
+                                        @break
+                                    @endif
+                                @endforeach
+                                style="margin-right: 10px;">{{$a->adgroup_name}}
+                            </li>
+
+                        @endforeach
+                    </ul>
+
+                    <div class="text-center" style="margin-top: 10px">
+                        <button class="btn btn-sm btn-primary form-control-sm">Save</button>
+                    </div>
+
+                </form>
+
             </div>
             <div class="col-sm-6" style="padding: 10px;">
-                <ul class="list-group">
-                    @foreach($addr as $ad)
-                        <li class="list-group-item">
-                            <input type="checkbox" disabled style="margin-right: 10px;"> {{$ad->email}}
-                            <div style="float: right">
-                                <a class="btn btn-sm btn-primary text-white">set</a>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
+
+                <form class="form-group" method="post" action="/manager/policy/update_addr_assignments/{{$name[0]->id}}">
+
+                    {{csrf_field()}}
+                    {!! method_field('PATCH') !!}
+
+                    <input type="hidden" name="policy_id" value="{{$name[0]->id}}">
+
+                    <ul class="list-group form-control-sm">
+                        @foreach($addr as $a)
+
+                            <li class="list-group-item">
+                                <input name = "adg{{$a->id}}" type="checkbox"
+                                    @foreach($address as $ad)
+                                        @if($ad->address_list_id == $a->id)
+                                            checked
+                                            @break
+                                        @endif
+                                    @endforeach
+                                    style="margin-right: 10px;">{{$a->email}}
+                            </li>
+
+                        @endforeach
+                    </ul>
+
+                    <div class="text-center" style="margin-top: 10px">
+                        <button class="btn btn-sm btn-primary form-control-sm">Save</button>
+                    </div>
+
+                </form>
+
             </div>
         </div>
 

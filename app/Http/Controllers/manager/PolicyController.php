@@ -206,13 +206,13 @@ class PolicyController extends Controller
 
     public function assign_policy($id){
 
-        $query = 'select policy_name from policies where id = '.$id;
+        $query = 'select id, policy_name from policies where id = '.$id;
         $name = DB::select($query);
 
-        $query = 'select account_policy.*, adgroup_lists.adgroup_name  from adgroup_lists right join account_policy on adgroup_lists.id = account_policy.adgroup_list_id where account_policy.address_list_id = 0 order by account_policy.policy_id ASC';
+        $query = 'select account_policy.*, adgroup_lists.adgroup_name  from adgroup_lists right join account_policy on adgroup_lists.id = account_policy.adgroup_list_id where account_policy.address_list_id = 0 and account_policy.policy_id = '.$id.' order by account_policy.policy_id ASC';
         $adgroup = DB::select($query);
 
-        $query = 'select account_policy.*, address_lists.email  from address_lists right join account_policy on address_lists.id = account_policy.address_list_id where account_policy.adgroup_list_id = 0 order by account_policy.policy_id ASC';
+        $query = 'select account_policy.*, address_lists.email  from address_lists right join account_policy on address_lists.id = account_policy.address_list_id where account_policy.adgroup_list_id = 0 and account_policy.policy_id = '.$id.' order by account_policy.policy_id ASC';
         $address = DB::select($query);
 
         $query = 'select * from adgroup_lists order by adgroup_name ASC';
@@ -222,6 +222,17 @@ class PolicyController extends Controller
         $addr = DB::select($query);
 
         return view('manager.mngassignpolicy', array('name' => $name, 'adgroup' => $adgroup, 'address' => $address, 'adg' => $adg, 'addr' => $addr));
+
+    }
+
+    public function update_grp_assignments($policy_id, Request $request){
+
+
+
+    }
+
+    public function update_addr_assignments($id, Request $request){
+
 
     }
 
