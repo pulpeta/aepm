@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
         $this->call(SeedBlacklistTable::class);
         $this->call(SeedActionsTable::class);
         $this->call(SeedPolicyTable::class);
+        $this->call(SeedAdgroupTable::class);
+        $this->call(SeedAddressTable::class);
 
     }
 }

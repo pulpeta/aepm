@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Manager\Policy;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Psr\Log\NullLogger;
 
 class PolicyController extends Controller
 {
@@ -209,10 +210,10 @@ class PolicyController extends Controller
         $query = 'select id, policy_name from policies where id = '.$id;
         $name = DB::select($query);
 
-        $query = 'select account_policy.*, adgroup_lists.adgroup_name  from adgroup_lists right join account_policy on adgroup_lists.id = account_policy.adgroup_list_id where account_policy.address_list_id = 0 and account_policy.policy_id = '.$id.' order by account_policy.policy_id ASC';
+        $query = 'select account_policy.*, adgroup_lists.adgroup_name  from adgroup_lists right join account_policy on adgroup_lists.id = account_policy.adgroup_list_id where account_policy.address_list_id IS NULL and account_policy.policy_id = '.$id.' order by account_policy.policy_id ASC';
         $adgroup = DB::select($query);
 
-        $query = 'select account_policy.*, address_lists.email  from address_lists right join account_policy on address_lists.id = account_policy.address_list_id where account_policy.adgroup_list_id = 0 and account_policy.policy_id = '.$id.' order by account_policy.policy_id ASC';
+        $query = 'select account_policy.*, address_lists.email  from address_lists right join account_policy on address_lists.id = account_policy.address_list_id where account_policy.adgroup_list_id IS NULL and account_policy.policy_id = '.$id.' order by account_policy.policy_id ASC';
         $address = DB::select($query);
 
         $query = 'select * from adgroup_lists order by adgroup_name ASC';
@@ -225,13 +226,30 @@ class PolicyController extends Controller
 
     }
 
-    public function update_grp_assignments($policy_id, Request $request){
+    public function update_grp_assignments(Request $request){
 
+        $policy_id = $request->policy_id;
 
+        DB::table('account_policy')->where('policy_id', $policy_id)
+                                        ->whereNull('address_list_id')
+                                        ->delete();
+
+        $adgroups = $request->except(['_token', '_method', 'policy_id']);
+
+        foreach ($adgroups as $item){
+            DB::table('account_policy')->insert([
+                'policy_id' => $policy_id,
+                'adgroup_list_id' => $item,
+                'address_list_id' => NULL
+                ]);
+        }
+
+        return redirect()->back();
 
     }
 
-    public function update_addr_assignments($id, Request $request){
+    public function update_addr_assignments(Request $request){
+
 
 
     }

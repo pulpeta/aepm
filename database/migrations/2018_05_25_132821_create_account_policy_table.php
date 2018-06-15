@@ -16,8 +16,8 @@ class CreateAccountPolicyTable extends Migration
         Schema::create('account_policy', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('policy_id');
-            $table->unsignedInteger('address_list_id')->default(0);
-            $table->unsignedInteger('adgroup_list_id')->default(0);
+            $table->unsignedInteger('address_list_id')->nullable();
+            $table->unsignedInteger('adgroup_list_id')->nullable();
         });
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
