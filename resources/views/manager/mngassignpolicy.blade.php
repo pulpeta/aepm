@@ -37,7 +37,6 @@
                                 value = "{{$a->id}}"
                                 @foreach($adgroup as $ad)
                                     @if($ad->adgroup_list_id == $a->id)
-
                                         checked
                                         @break
                                     @endif
@@ -69,6 +68,7 @@
 
                             <li class="list-group-item">
                                 <input name = "adg{{$a->id}}" type="checkbox"
+                                    value = "{{$a->id}}"
                                     @foreach($address as $ad)
                                         @if($ad->address_list_id == $a->id)
                                             checked

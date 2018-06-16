@@ -196,10 +196,10 @@ class PolicyController extends Controller
 
         $policy = Policy::orderBy('created_at', 'DESC')->get();
 
-        $query = 'select account_policy.*, adgroup_lists.adgroup_name  from adgroup_lists right join account_policy on adgroup_lists.id = account_policy.adgroup_list_id where account_policy.address_list_id = 0 order by account_policy.policy_id ASC';
+        $query = 'select account_policy.*, adgroup_lists.adgroup_name  from adgroup_lists right join account_policy on adgroup_lists.id = account_policy.adgroup_list_id where account_policy.address_list_id IS NULL order by account_policy.policy_id ASC';
         $adgroup = DB::select($query);
 
-        $query = 'select account_policy.*, address_lists.email  from address_lists right join account_policy on address_lists.id = account_policy.address_list_id where account_policy.adgroup_list_id = 0 order by account_policy.policy_id ASC';
+        $query = 'select account_policy.*, address_lists.email  from address_lists right join account_policy on address_lists.id = account_policy.address_list_id where account_policy.adgroup_list_id IS NULL order by account_policy.policy_id ASC';
         $address = DB::select($query);
 
         return view('manager.mngpolicyassignment', array('policy' => $policy, 'adgroup' => $adgroup, 'address' => $address));
@@ -250,7 +250,23 @@ class PolicyController extends Controller
 
     public function update_addr_assignments(Request $request){
 
+        $policy_id = $request->policy_id;
 
+        DB::table('account_policy')->where('policy_id', $policy_id)
+            ->whereNull('adgroup_list_id')
+            ->delete();
+
+        $adgroups = $request->except(['_token', '_method', 'policy_id']);
+
+        foreach ($adgroups as $item){
+            DB::table('account_policy')->insert([
+                'policy_id' => $policy_id,
+                'address_list_id' => $item,
+                'adgroup_list_id' => NULL
+            ]);
+        }
+
+        return redirect()->back();
 
     }
 
