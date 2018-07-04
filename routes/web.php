@@ -29,6 +29,7 @@ Route::get('/admin/users', 'AdminController@users')->name('users');
 Route::get('/admin/users/edit/{id}', 'AdminController@edituser');
 Route::get('/admin/options', 'AdminController@options')->name('options');
 Route::get('/admin/backup', 'AdminController@backup')->name('backup');
+Route::get('/admin/import','AdminController@import');
 Route::post('/admin/uploadlicense','AdminController@uploadlicense');
 Route::patch('/admin/users/update/{id}', 'AdminController@updateuser');
 Route::delete('/admin/users/delete/{id}', 'AdminController@deleteuser');

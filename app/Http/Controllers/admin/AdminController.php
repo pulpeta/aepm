@@ -80,13 +80,17 @@ class AdminController extends Controller
 
     public function uploadlicense(){
 
-
-
     }
 
     public function backup(){
 
         return view('admin.admbackup');
+
+    }
+
+    public function import(){
+
+        return view('admin.admimport');
 
     }
 }
