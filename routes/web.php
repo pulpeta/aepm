@@ -89,3 +89,7 @@ Route::delete('/manager/policy/removeaction/{id}','PolicyController@removeaction
 
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
