@@ -46,17 +46,77 @@ class AdminController extends Controller
 
     public function updateuser($id, Request $req){
 
+
+
+        if(request()->input('is_admin') != null){
+            $admin = 1;
+        }else{
+            $admin = 0;
+        }
+
+        if(request()->input('is_enabled') != null){
+            $enable = 1;
+        }else{
+            $enable = 0;
+        }
+
+        if(request()->input('cpw') == null){
+            $password = request()->input('pw');
+        }else{
+            $password = bcrypt(request()->input('cpw'));
+        }
+
+        if(1>2){
+            $res = UserList::where('id', $id)->update(
+                [
+                    'name' => request()->input('name'),
+                    'email' => request()->input('email'),
+                    'password' => $password,
+                    'is_admin' => $admin,
+                    'is_enabled' => $enable,
+                    'updated_at' => Carbon::now()
+                ]
+            );
+        }else{
+            $res = UserList::where('id', $id)->update(
+                [
+                    'name' => request()->input('name'),
+                    'email' => request()->input('email'),
+                    'is_admin' => $admin,
+                    'is_enabled' => $enable,
+                    'updated_at' => Carbon::now()
+                ]
+            );
+        }
+
+        return redirect()->back();
+
+    }
+
+    public function enable_user($id){
+
         $user = UserList::find($id);
-        $user->name = request()->input('name');
-        $user->email = request()->input('email');
-        //verificare password e cifratura
-        $user->password = request()->input('password');
-        //non può essere null
-        $user->is_admin = request()->input('is_admin');
-        //non può essere null
-        $user->is_enabled = request()->input('is_enabled');
-        $user->updated_at = carbon::now();
-        $res = $user->save();
+
+        if($user->is_enabled == 1){
+
+            $res = UserList::where('id', $id)->update(
+                [
+                    'is_enabled' => 0,
+                    'updated_at' => Carbon::now()
+                ]
+            );
+
+        }elseif($user->is_enabled == 0){
+
+            $res = UserList::where('id', $id)->update(
+                [
+                    'is_enabled' => 1,
+                    'updated_at' => Carbon::now()
+                ]
+            );
+        }
+
+        return redirect()->route('users');
 
     }
 
@@ -67,7 +127,7 @@ class AdminController extends Controller
         $user->email = request()->input('email');
         $user->is_admin = request()->input('is_admin');
         $user->is_enabled = 0;
-        $user->password = bcrypt('123456');
+        $user->password = bcrypt(request()->input('cpw'));
         $res = $user->save();
 
     }

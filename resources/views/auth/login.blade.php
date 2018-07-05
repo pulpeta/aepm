@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('templates.template')
 
 @section('content')
-<div class="container">
+<div class="container" style="margin-top: 10%;">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card card-default">
-                <div class="card-header">Login</div>
+                <div class="card-header bg-transparent">Login</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -54,7 +54,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>
-
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
                                 </a>

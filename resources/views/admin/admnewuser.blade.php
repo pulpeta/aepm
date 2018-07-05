@@ -28,28 +28,20 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" name="pw" id="pw" value="{{$user->password}}">
+                    <input type="password" class="form-control" name="password" id="password" value="{{$user->password}}">
                 </div>
                 <div class="form-group">
                     <label for="confirmpassword">Confirm Password</label>
-                    <input type="password" class="form-control" name="cpw" id="cpw">
+                    <input type="password" class="form-control" name="confirmpassword" id="confirmpassword">
                 </div>
                 <div class="form-group form-check form-check-inline">
                     <label class="form-check-label" for="isadmin">Administrator
-                        @if($user->is_admin == 1)
-                            <input type="checkbox" class="form-check-input" name="is_admin" id="is_admin" checked>
-                        @elseif($user->is_admin == 0)
-                            <input type="checkbox" class="form-check-input" name="is_admin" id="is_admin">
-                        @endif
+                        <input type="checkbox" class="form-check-input" name="isadmin" id="isadmin" checked="{{$user->is_admin}}">
                     </label>
                 </div>
                 <div class="form-group form-check form-check-inline">
                     <label class="form-check-label" for="isenabled">Enabled
-                        @if($user->is_enabled == 1)
-                            <input type="checkbox" class="form-check-input" name="is_enabled" id="is_enabled" checked>
-                        @elseif($user->is_enabled == 0)
-                            <input type="checkbox" class="form-check-input" name="is_enabled" id="is_enabled">
-                        @endif
+                        <input type="checkbox" class="orm-check-input" name="isenabled" id="isenabled" checked="{{$user->is_enabled}}">
                     </label>
                 </div>
                 <div class="form-group text-center">

@@ -27,7 +27,7 @@
                             @else
                             <div class="row text-muted">
                             @endif
-                                <div class="col-sm-3">
+                                <div class="col-sm-2">
                                     {{$admin->name}}
                                 </div>
                                 <div class="col-sm-5">
@@ -51,6 +51,20 @@
                                         {!! method_field('DELETE') !!}
 
                                         <button class="btn btn-danger btn-sm"><span class="far fa-minus"></span></button>
+                                    </form>
+                                </div>
+                                <div class="col-sm-1 text-right">
+                                    <form action="{{ url('/admin/users/status/'.$admin->id) }}" method="POST">
+
+                                        {!! csrf_field() !!}
+                                        {!! method_field('patch') !!}
+
+                                        @if($admin->is_enabled)
+                                                <button class="btn btn-success btn-sm"><span class="far fa-arrow-up"></span></button>
+                                            @else
+                                                <button class="btn btn-warning btn-sm"><span class="far fa-arrow-down"></span></button>
+                                        @endif
+
                                     </form>
                                 </div>
                             </div>

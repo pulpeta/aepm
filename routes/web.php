@@ -12,13 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('login');
-
+    return view('auth.login');
 });
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 
 //-------------Admin-routes
 
@@ -32,6 +31,7 @@ Route::get('/admin/backup', 'AdminController@backup')->name('backup');
 Route::get('/admin/import','AdminController@import');
 Route::post('/admin/uploadlicense','AdminController@uploadlicense');
 Route::patch('/admin/users/update/{id}', 'AdminController@updateuser');
+Route::patch('/admin/users/status/{id}', 'AdminController@enable_user');
 Route::delete('/admin/users/delete/{id}', 'AdminController@deleteuser');
 
 
