@@ -52,6 +52,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#"><span class="far fa-question-circle"> Help</span> </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{'logout'}}"><span class="far fa-sign-out-alt"> Logout</span> </a>
+                </li>
             </ul>
         </div>
     </nav>

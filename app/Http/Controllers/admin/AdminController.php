@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 //use Symfony\Component\VarDumper\Dumper\DataDumperInterface;
 use App\Models\Admin\UserList;
 use App\Models\Admin\Dashboard;
-
+use Auth;
 use Carbon\Carbon;
 
 class AdminController extends Controller
@@ -45,8 +45,6 @@ class AdminController extends Controller
     }
 
     public function updateuser($id, Request $req){
-
-
 
         if(request()->input('is_admin') != null){
             $admin = 1;
@@ -94,6 +92,12 @@ class AdminController extends Controller
     }
 
     public function enable_user($id){
+
+        $u = Auth::user();
+
+        if(!($u['id'] == $id)){
+
+        }
 
         $user = UserList::find($id);
 

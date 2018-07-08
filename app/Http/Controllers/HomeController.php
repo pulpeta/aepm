@@ -31,7 +31,15 @@ class HomeController extends Controller
             return redirect('/admin/dashboard');
         }
 
-        return redirect('/manager/dashboard');
+        if($user->is_admin == 0)
+        {
+            return redirect('/manager/dashboard');
+        }
+
+        if(!($user->is_admin))
+        {
+            return redirect('/login');
+        }
 
     }
 }
