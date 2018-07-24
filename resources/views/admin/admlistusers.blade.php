@@ -7,12 +7,28 @@
 @section('content')
 
     <div class="row" style="margin-bottom: 20px;">
-        <div class="col-sm-12 text-center">
+        <div class="col-sm-4">
+            <form>
+                <div class="form-row">
+                    <div class="col-sm-10">
+                        <input class="form-control form-control-sm" type="text" placeholder="Search User">
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="submit" class="btn btn-sm btn-primary"><span class="far fa-search"></span></button>
+                    </div>
+
+                </div>
+
+            </form>
+        </div>
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 text-right">
             <button class="btn btn-sm btn-primary">
                 <span class="far fa-plus-circle"></span> Add User
             </button>
         </div>
     </div>
+
     <div class="row" style="margin-bottom: 20px;">
         <div class="col-sm-12">
 

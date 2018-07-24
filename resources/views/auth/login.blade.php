@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card" style="margin-top: 10%;">
 
-                <div class="card-header" style="padding-top: 30px;">
+                <div class="card-header bg-info" style="padding-top: 30px;">
                     <div class="row">
                         <div class="col-md-4 text-md-right">
                             <img class="mb-4 rounded" src="{{asset('img/aelogo.jpg')}}" alt="" width="56" height="56">
