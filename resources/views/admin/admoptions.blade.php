@@ -6,6 +6,12 @@
 
 @section('content')
 
+    @if(session()->has('message'))
+        @component('components.alert-info')
+            {{ session()->get('message') }}
+        @endcomponent
+    @endif
+
     <div class="row">
         <div class="col-sm-4 text-left">
             <h4>Upload License File</h4>

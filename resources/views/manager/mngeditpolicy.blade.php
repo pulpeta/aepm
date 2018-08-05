@@ -6,6 +6,12 @@
 
 @section('content')
 
+    @if(session()->has('message'))
+        @component('components.alert-info')
+            {{ session()->get('message') }}
+        @endcomponent
+    @endif
+
     @foreach($policy as $p)
 
         <div class="row" style="margin-bottom: 30px;">

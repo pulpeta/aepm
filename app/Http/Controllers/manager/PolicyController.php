@@ -11,6 +11,12 @@ use Psr\Log\NullLogger;
 
 class PolicyController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request){
 
         $policy = Policy::orderBy('created_at', 'DESC')->get();

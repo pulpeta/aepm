@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->middleware('auth');
 
 
-Route::group(['middleware' => 'auth'],
+Route::group(['middleware' => ['auth', 'admin']],
     function () {
 
         //-------------Admin-routes
@@ -36,6 +36,12 @@ Route::group(['middleware' => 'auth'],
         Route::patch('/admin/users/update/{id}', 'AdminController@updateuser');
         Route::patch('/admin/users/status/{id}', 'AdminController@enable_user');
         Route::delete('/admin/users/delete/{id}', 'AdminController@deleteuser');
+    }
+);
+
+
+Route::group(['middleware' => ['auth', 'operator']],
+    function () {
 
         //-------------Manager-routes
 

@@ -26,15 +26,15 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-        if($user->is_enabled == 0){
-            return redirect('/logout');
+        if($user->is_enabled === 0){
+            return redirect('/login');
         }
 
-        if($user->is_admin == 1){
+        if($user->is_admin === 1){
             return redirect('/admin/dashboard');
         }
 
-        if($user->is_admin == 0){
+        if($user->is_admin === 0){
             return redirect('/manager/dashboard');
         }
 

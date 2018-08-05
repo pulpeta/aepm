@@ -6,6 +6,12 @@
 
 @section('content')
 
+    @if(session()->has('message'))
+        @component('components.alert-info')
+            {{ session()->get('message') }}
+        @endcomponent
+    @endif
+
     <div class="container">
         <div class="row">
             <div class="col-sm-12">

@@ -11,6 +11,13 @@ use Carbon\Carbon;
 
 class WhitelistController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+    }
+
     public function index(Request $request){
 
         $qrbuilder = Whitelist::orderBy('created_at', 'DESC');

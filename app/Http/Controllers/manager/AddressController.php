@@ -11,6 +11,12 @@ use Carbon\Carbon;
 
 class AddressController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request){
 
         $qrbuilder = Address_list::orderBy('created_at', 'DESC');

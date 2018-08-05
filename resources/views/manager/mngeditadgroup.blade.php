@@ -6,6 +6,12 @@
 
 @section('content')
 
+    @if(session()->has('message'))
+        @component('components.alert-info')
+            {{ session()->get('message') }}
+        @endcomponent
+    @endif
+
     <div class="container container-fluid">
 
         <div class="row" style="margin-bottom: 20px;">

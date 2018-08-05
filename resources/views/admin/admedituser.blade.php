@@ -6,6 +6,12 @@
 
 @section('content')
 
+    @if(session()->has('message'))
+        @component('components.alert-info')
+            {{ session()->get('message') }}
+        @endcomponent
+    @endif
+
     <div class="row text-center" style="margin-bottom: 20px;">
         <div class="col-sm-12">
             <a class="btn btn-primary btn-sm" href="{{'/admin/users'}}">Back to Users</a>
